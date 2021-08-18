@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-function Pokemon() {
-  const { pokemon } = useParams();
+const Pokemon = () => {
+  const { pokemonName } = useParams();
   const [pkmn, setPkmn] = useState(null);
 
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
         const resp = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
         );
         setPkmn(await resp.json());
       } catch (err) {
@@ -17,9 +17,7 @@ function Pokemon() {
       }
     };
     fetchPokemon();
-  }, [pokemon]);
-
-  console.log("pokemon", pkmn);
+  }, [pokemonName]);
 
   return (
     <div>
@@ -37,18 +35,22 @@ function Pokemon() {
               <div className="pokemon--name">{pkmn.name}.</div>
               <div className="pokemon--type">
                 {pkmn.types &&
-                  pkmn.types.map((type) => <div>{type.type.name}</div>)}
+                  pkmn.types.map((type, index) => (
+                    <div key={index}>{type.type.name}</div>
+                  ))}
               </div>
             </div>
             <div className="pokemon--right">
               <table>
-                {pkmn?.stats &&
-                  pkmn.stats.map((stat) => (
-                    <tr>
-                      <td>{stat.stat.name}</td>
-                      <td>{stat.base_stat}</td>
-                    </tr>
-                  ))}
+                <tbody>
+                  {pkmn?.stats &&
+                    pkmn.stats.map((stat, index) => (
+                      <tr key={index}>
+                        <td>{stat.stat.name}</td>
+                        <td>{stat.base_stat}</td>
+                      </tr>
+                    ))}
+                </tbody>
               </table>
             </div>
           </div>
@@ -56,6 +58,6 @@ function Pokemon() {
       )}
     </div>
   );
-}
+};
 
 export default Pokemon;
