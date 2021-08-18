@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams } from "react-router";
 import useFetch from "../hooks/useFetch";
+import addThunderbolt from "../functions/addThunderbolt";
 
-const Pokemon = () => {
+const Pokemon = (props) => {
   const { pokemonName } = useParams();
 
   const {
@@ -33,6 +34,9 @@ const Pokemon = () => {
                     <div key={index}>{type.type.name}</div>
                   ))}
               </div>
+              <button className="login--btn" onClick={props.onThunder}>
+                Zap!
+              </button>
             </div>
             <div className="pokemon--right">
               <table>
@@ -54,4 +58,4 @@ const Pokemon = () => {
   );
 };
 
-export default Pokemon;
+export default addThunderbolt(Pokemon);
