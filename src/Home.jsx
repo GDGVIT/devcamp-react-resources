@@ -13,17 +13,24 @@ function Home() {
       }
     };
     fetchPokemon();
-  });
+  }, []);
+
+  console.log("pokemon list", pokemon.results);
 
   return (
-    <ol className="App">
-      {pokemon.results &&
-        pokemon.results.map((p) => (
-          <li key={p.name}>
-            <a href={`/${p.name}`}>{p.name}</a>
-          </li>
-        ))}
-    </ol>
+    <div>
+      <div class="pokemon-list--title">Pokemon List</div>
+      <div className="pokemon-list--container">
+        {pokemon.results &&
+          pokemon.results.map((p) => (
+            <div key={p.name}>
+              <a className="pokemon-list--pokemon" href={`/${p.name}`}>
+                {p.name}
+              </a>
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 

@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Pokemon from "./Pokemon";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -14,7 +14,7 @@ function App() {
           <Pokemon />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 

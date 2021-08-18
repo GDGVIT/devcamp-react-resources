@@ -1,13 +1,138 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Pokemon List.jsx */
+
+.pokemon-list--container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 50px;
+  place-items: center;
+  padding: 100px 50px;
+  background-color: #26272c;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.pokemon-list--container > div {
+  padding: 30px;
+  width: 200px;
+  text-align: center;
+  border: 1px solid #b5ffd9;
+  background-color: #393c42;
+}
+
+.pokemon-list--title {
+  padding: 100px 50px;
+  font-size: 80px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #b5ffd9;
+}
+
+.pokemon-list--pokemon {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  color: #b5ffd9;
+}
+
+/* Pokemon.jsx */
+.pokemon {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ae00fb;
+  display: grid;
+  place-items: center;
+}
+
+.pokemon--container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+}
+
+.pokemon--name {
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pokemon--right {
+  padding: 0 50px;
+}
+
+.pokemon--type {
+  display: grid;
+  place-items: center;
+  padding: 8px 10px;
+  margin-top: 5px;
+  grid-template-columns: 1fr 1fr;
+  font-size: 18px;
+  background-color: white;
+  color: #ae00fb;
+  border-radius: 20px;
+}
+
+.pokemon--right > table > tr > td {
+  margin-right: 30px;
+  padding: 10px 20px;
+}
+
+.pokemon--right > table {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+/* Login page */
+
+.login--screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b5ffd9;
+  display: grid;
+  place-items: center;
+}
+
+.login--container {
+  display: grid;
+  place-items: center;
+  row-gap: 40px;
+}
+
+.login--container > div {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.login--btn {
+  font-size: 20px;
+  padding: 10px 30px;
+  outline: none;
+  background-color: #393c42;
+  border-radius: 5px;
+  border: none;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  color: #b5ffd9;
+  cursor: pointer;
+}
+
+/* not found */
+.not-found {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #b5ffd9;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* pikachus message */
+.message {
+  font-size: 30px;
+  color: #b5ffd9;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px 0;
 }
