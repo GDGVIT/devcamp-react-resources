@@ -1,10 +1,15 @@
-const Login = () => {
+import { Redirect } from "react-router-dom";
+
+const Login = ({ isLoggedIn, onLoggedIn }) => {
   console.log("Login function is rendering!");
 
   return (
     <div className="login--screen">
       <div className="login--container">
-        <button className="login--btn">Login</button>
+        {!isLoggedIn ? <div>Not Logged In 🙄</div> : <Redirect to="/" />}
+        <button onClick={onLoggedIn} className="login--btn">
+          Login
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [pokemon, setPokemon] = useState([]);
@@ -23,12 +23,12 @@ function Home() {
         {pokemon.results &&
           pokemon.results.map((p) => (
             <div key={p.name}>
-              <a className="pokemon-list--pokemon" href={`pokemon/${p.name}`}>
+              {/* <a className="pokemon-list--pokemon" href={`pokemon/${p.name}`}>
                 {p.name}
-              </a>
-              {/* <Link className="pokemon-list--pokemon" to={`pokemon/${p.name}`}>
+              </a> */}
+              <Link className="pokemon-list--pokemon" to={`pokemon/${p.name}`}>
                 {p.name}
-              </Link> */}
+              </Link>
             </div>
           ))}
       </div>
