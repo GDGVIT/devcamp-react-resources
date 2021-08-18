@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router";
+import useFetch from "../hooks/useFetch";
 
 const Pokemon = () => {
   const { pokemonName } = useParams();
-  const [pkmn, setPkmn] = useState(null);
 
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      try {
-        const resp = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-        );
-        setPkmn(await resp.json());
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchPokemon();
-  }, [pokemonName]);
+  const {
+    data: pkmn,
+    isLoading,
+    error,
+  } = useFetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
   return (
     <div>
+      {error && <div className="message">{error}</div>}
+      {isLoading && <div className="message">Loading pokemon ...</div>}
       {pkmn && (
         <div className="pokemon">
           <div className="pokemon--container">

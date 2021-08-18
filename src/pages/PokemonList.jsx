@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 function Home() {
-  const [pokemon, setPokemon] = useState([]);
+  const match = useRouteMatch();
 
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      try {
-        const resp = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
-        setPokemon(await resp.json());
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchPokemon();
-  }, []);
+  const {
+    data: pokemon,
+    isLoading,
+    error,
+  } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=100");
 
   return (
     <div>
       <div className="pokemon-list--title">Pokemon List</div>
       <div className="pokemon-list--container">
-        {pokemon.results &&
-          pokemon.results.map((p) => (
+        {error && <div className="message">{error}</div>}
+        {isLoading && <div className="message">Loading pokemon list ...</div>}
+        {pokemon?.results &&
+          pokemon?.results.map((p) => (
             <div key={p.name}>
               {/* <a className="pokemon-list--pokemon" href={`pokemon/${p.name}`}>
                 {p.name}
               </a> */}
-              <Link className="pokemon-list--pokemon" to={`pokemon/${p.name}`}>
+              <Link
+                className="pokemon-list--pokemon"
+                to={`${match.url}/${p.name}`}
+              >
                 {p.name}
               </Link>
             </div>
